@@ -1,0 +1,84 @@
+.custom-button {
+  background-color: #ff57d3; /* Pink color */
+  color: white;
+  padding: 10px 20px;
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+  text-transform: uppercase;
+}
+
+.custom-button::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  right: 0;
+  height: 10px;
+  background-color: #00d2ff; /* Blue shadow */
+  border-radius: 0 0 20px 20px;
+  z-index: -1; /* Ensures the shadow is below the button */
+}
+
+/* Optional: Add some hover effects */
+.custom-button:hover {
+  background-color: #e34dc3; /* Slightly darker pink */
+}
+
+.introduce-custom {
+  position: relative;
+}
+
+.introduce-custom .ant-select-selector {
+  border: none !important;
+  background-color: #ff66c4 !important;
+  color: #fff !important;
+  font-weight: 700;
+  border-radius: 30px;
+}
+
+.introduce-custom::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  width: 0px;
+  height: 0px;
+  border-style: solid;
+  border-width: 10px 7px 0 7px;
+  border-color: #fff transparent transparent transparent;
+  transform: rotate(0deg) translateY(-50%);
+}
+
+.introduce-custom .ant-select-arrow {
+  color: #fff !important;
+  opacity: 0;
+  position: relative;
+}
+
+.introduce-custom-date {
+  border: none;
+  background-color: #ffe500 !important;
+  border-radius: 20px;
+  font-weight: bold;
+}
+.introduce-custom-date .ant-picker-suffix {
+  display: none;
+}
+
+.introduce-custom-date .ant-picker-clear {
+  display: none;
+}
+
+.introduce-custom-date .ant-picker-input input {
+  justify-content: center !important;
+  text-align: center;
+}
+
+.introduce-custom-date .ant-picker-input input::placeholder {
+  color: #000 !important;
+}
