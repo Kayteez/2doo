@@ -15,7 +15,7 @@ export default function Layout({ children, showAppbar = false }: { children: Rea
           <img src={IconBar} alt='' />
         </div>
       )}
-      <div className={`relative pb-[80px] z-10 px-4  ${showAppbar ? 'mt-[100px]' : 'mt-4'}`}>{children}</div>
+      <div className={`relative h-full pb-[80px] z-10 px-4  ${showAppbar ? 'mt-[100px]' : 'mt-4'}`}>{children}</div>
       <div className='fixed bottom-0 w-full px-4 h-[80px] z-20 py-2 bg-white flex items-center shadow-md'>
         <div className='w-full bg-white'>
           <BottomBar />
