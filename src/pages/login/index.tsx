@@ -28,7 +28,7 @@ interface IForm {
   reason: string
 }
 
-const Introduce = () => {
+const Login = () => {
   const navigate = useNavigate()
   const [form, setForm] = useState<IForm>({
     name: '',
@@ -147,4 +147,4 @@ const Introduce = () => {
   )
 }
 
-export default Introduce
+export default Login

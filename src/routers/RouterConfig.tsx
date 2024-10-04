@@ -2,7 +2,7 @@ import { createBrowserRouter } from 'react-router-dom'
 import Layout from '~/components/layout'
 import Dashboard from '~/pages/dashboard'
 import Home from '~/pages/home'
-import Introduce from '~/pages/introduce'
+import Login from '~/pages/login'
 import PlanInWeek from '~/pages/planInWeek'
 
 export const Routes = createBrowserRouter([
@@ -31,7 +31,7 @@ export const Routes = createBrowserRouter([
     )
   },
   {
-    path: '/introduce',
-    element: <Introduce />
+    path: '/login',
+    element: <Login />
   }
 ])

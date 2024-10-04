@@ -1,0 +1,32 @@
+.ant-picker-week-panel-row .ant-picker-cell-inner {
+  display: none; /* Ẩn tuần hiển thị */
+}
+
+.border-2doo-pink {
+  border: 1px solid #ff66c4;
+}
+
+.line-custom::after {
+  content: '';
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #000;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 0;
+}
+
+.line-custom::before {
+    content: '';
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: #000;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+  }
+  
