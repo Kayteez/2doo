@@ -37,8 +37,6 @@ export default function BottomBar() {
     }
   ]
 
-  console.log('active', active)
-
   return (
     <div className='flex justify-around bg-2doo-blue rounded-full'>
       {items.map((item, index) => {
