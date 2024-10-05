@@ -13,7 +13,7 @@ export default function BottomBar() {
     {
       icon: <TodaySVG />,
       text: 'Hôm nay',
-      url: '/'
+      url: '/today'
     },
     {
       icon: <WeekSVG />,
@@ -23,35 +23,46 @@ export default function BottomBar() {
     {
       icon: <MonthSVG />,
       text: 'Trong tháng',
-      url: '/'
+      url: '/plan-in-month'
     },
     {
       icon: <OceanSVG />,
       text: 'Đại dương',
-      url: '/'
+      url: '/ocean'
     },
     {
       icon: <AccountSVG />,
       text: 'Tài khoản',
-      url: '/'
+      url: '/account'
     }
   ]
+
+  console.log('active', active)
+
   return (
     <div className='flex justify-around bg-2doo-blue rounded-full'>
-      {items.map((item) => {
+      {items.map((item, index) => {
         return (
           <div
-            key={item.text}
+            key={index}
+            className='flex justify-center items-center p-2 cursor-pointer gap-2'
             onClick={() => {
               setActive(item.text)
               navigate(item.url)
             }}
-            className='flex justify-center items-center p-2 cursor-pointer gap-2'
           >
             <p className={`${active === item.text ? 'bg-2doo-pink' : ''} text-starbucks-white rounded-full p-1`}>
               {item.icon}
             </p>
-            <p className={`text-starbucks-white ${active !== item.text ? 'hidden' : ''} text-lg`}>{item.text}</p>
+            <p
+              className={`${
+                active !== item.text ? 'absolute' : ''
+              } text-starbucks-white text-lg transition-all duration-300 ease-in-out transform cursor-not-allowed ${
+                active === item.text ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'
+              }`}
+            >
+              {item.text}
+            </p>
           </div>
         )
       })}
