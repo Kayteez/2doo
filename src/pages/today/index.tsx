@@ -71,10 +71,10 @@ const Today = () => {
             </Space>
           </Dropdown>
         </div>
-        <ul className='space-y-2'>
+        <div className='space-y-2'>
           {tasks.map((task, index) => (
-            <li key={index} className='flex items-center p-2 bg-white rounded-lg'>
-              <label className='flex items-center cursor-pointer'>
+            <div key={index} className='flex items-center p-2 bg-white rounded-lg'>
+              <label className='flex items-center cursor-pointer w-full'>
                 <input type='checkbox' className='hidden peer' />
                 <div className='w-6 h-6 mr-3 border-2 border-2doo-blue rounded flex items-center justify-center peer-checked:bg-2doo-blue'>
                   <svg
@@ -87,16 +87,16 @@ const Today = () => {
                     <path strokeLinecap='round' strokeLinejoin='round' strokeWidth='3' d='M5 13l4 4L19 7' />
                   </svg>
                 </div>
+                <span className='flex-1 font-semibold text-lg'>{task.title}</span>
+                <span className='ml-2 text-xl flex gap-1 items-center'>
+                  {task.icons.map((icon) => {
+                    return <span key={icon}>{getIcon(icon)}</span>
+                  })}
+                </span>
               </label>
-              <span className='flex-1 font-semibold text-lg'>{task.title}</span>
-              <span className='ml-2 text-xl flex gap-1 items-center'>
-                {task.icons.map((icon) => {
-                  return <span key={icon}>{getIcon(icon)}</span>
-                })}
-              </span>
-            </li>
+            </div>
           ))}
-          <li className='flex items-center p-2 bg-white rounded-lg'>
+          <div className='flex items-center p-2 bg-white rounded-lg'>
             <label className='flex items-center cursor-pointer'>
               <input disabled type='checkbox' className='hidden peer' />
               <div className='w-6 h-6 mr-3 border-2 border-2doo-blue rounded peer-checked:bg-2doo-blue flex items-center justify-center'>
@@ -112,8 +112,8 @@ const Today = () => {
               </div>
             </label>
             <input type='text' placeholder='Nhập thêm...' className='flex-1 border-none outline-none text-lg' />
-          </li>
-        </ul>
+          </div>
+        </div>
       </div>
 
       <div className='absolute right-5 bottom-40 cursor-pointer'>
