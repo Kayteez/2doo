@@ -7,20 +7,24 @@ import TagSVG from '~/components/icons/tag'
 import FlagSVG from '~/components/icons/flag'
 import ArrowDown from '~/assets/images/svg/arrow-down.svg'
 import NewTask from '~/assets/images/svg/new-task.svg'
-import { Dropdown, MenuProps, Space } from 'antd'
+import { Checkbox, Dropdown, Menu, MenuProps, Space } from 'antd'
 import { useNavigate } from 'react-router-dom'
+import { useState } from 'react'
+
+const fakeTasks = [
+  { title: 'Một ly nước sáng, sảng khoái x2', icons: ['remind'] },
+  { title: 'Đem giày đi giặt', icons: ['location', 'remind'] },
+  { title: 'Mini test 30%', icons: ['remind'] },
+  { title: 'Online meeting 14:30', icons: ['priority', 'flag'] },
+  { title: 'Gửi proposal cho sponsor', icons: ['remind'] },
+  { title: 'Hủy gói cước', icons: ['priority', 'flag'] }
+]
 
 const Today = () => {
   const navigate = useNavigate()
-
-  const tasks = [
-    { title: 'Một ly nước sáng, sảng khoái x2', icons: ['remind'] },
-    { title: 'Đem giày đi giặt', icons: ['location', 'remind'] },
-    { title: 'Mini test 30%', icons: ['remind'] },
-    { title: 'Online meeting 14:30', icons: ['priority', 'flag'] },
-    { title: 'Gửi proposal cho sponsor', icons: ['remind'] },
-    { title: 'Hủy gói cước', icons: ['priority', 'flag'] }
-  ]
+  const [selectedOptions, setSelectedOptions] = useState<string[]>([])
+  const [tasks, setTasks] = useState<{ title: string; icons: string[] }[]>(fakeTasks)
+  const [inputValue, setInputValue] = useState('')
 
   const getIcon = (name: string) => {
     switch (name) {
@@ -41,16 +45,67 @@ const Today = () => {
     }
   }
 
-  const items: MenuProps['items'] = [
+  const sortByItems: MenuProps['items'] = [
     {
       key: '1',
-      label: <p>1st menu item</p>
+      label: <p>Tên</p>
     },
     {
       key: '2',
-      label: <p>2nd menu item</p>
+      label: <p>Thời gian nhập</p>
+    },
+    {
+      key: '3',
+      label: <p>Độ ưu tiên</p>
+    },
+    {
+      key: '4',
+      label: <p>Thời hạn</p>
     }
   ]
+
+  const displayItems = [
+    {
+      key: '1',
+      label: <p>Bình thường</p>
+    },
+    {
+      key: '2',
+      label: <p>Độ ưu tiên</p>
+    },
+    {
+      key: '3',
+      label: <p>Thời hạn</p>
+    },
+    {
+      key: '4',
+      label: <p>Địa điểm</p>
+    },
+    {
+      key: '5',
+      label: <p>Nhắc nhở</p>
+    },
+    {
+      key: '6',
+      label: <p>Gắn thẻ</p>
+    }
+  ]
+
+  const onChange = (checkedValues: any) => {
+    setSelectedOptions(checkedValues)
+  }
+
+  const menu = (
+    <Menu>
+      <Checkbox.Group onChange={onChange} value={selectedOptions} className='block'>
+        {displayItems.map((item) => (
+          <Menu.Item key={item.key}>
+            <Checkbox value={item.key}>{item.label}</Checkbox>
+          </Menu.Item>
+        ))}
+      </Checkbox.Group>
+    </Menu>
+  )
 
   return (
     <div className='py-10 h-full'>
@@ -58,13 +113,13 @@ const Today = () => {
 
       <div className='mt-10 p-4'>
         <div className='flex justify-between items-center mb-4'>
-          <Dropdown menu={{ items }}>
+          <Dropdown menu={{ items: sortByItems, selectable: true }}>
             <Space size='small'>
               <img src={ArrowDown} />
               <p className='font-medium text-gray-500'>Sắp xếp theo</p>
             </Space>
           </Dropdown>
-          <Dropdown menu={{ items }}>
+          <Dropdown overlay={menu} trigger={['click']}>
             <Space size='small'>
               <p className='font-medium text-gray-500'>Chọn hiển thị</p>
               <img src={ArrowDown} />
@@ -111,7 +166,20 @@ const Today = () => {
                 </svg>
               </div>
             </label>
-            <input type='text' placeholder='Nhập thêm...' className='flex-1 border-none outline-none text-lg' />
+            <input
+              type='text'
+              onKeyDown={(e) => {
+                // hit enter to add new task
+                if (e.key === 'Enter') {
+                  setTasks((prev) => [...prev, { title: e.currentTarget.value, icons: [] }])
+                  setInputValue('')
+                }
+              }}
+              onChange={(e) => setInputValue(e.target.value)}
+              value={inputValue}
+              placeholder='Nhập thêm...'
+              className='flex-1 border-none outline-none text-lg'
+            />
           </div>
         </div>
       </div>

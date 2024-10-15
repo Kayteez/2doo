@@ -1,5 +1,6 @@
 import { createBrowserRouter, Navigate } from 'react-router-dom'
 import Layout from '~/components/layout'
+import Checkout from '~/pages/checkout'
 import Login from '~/pages/login'
 import MakePlan from '~/pages/make-a-plan'
 import PlanInWeek from '~/pages/planInWeek'
@@ -49,5 +50,9 @@ export const Routes = createBrowserRouter([
   {
     path: '/login',
     element: <Login />
+  },
+  {
+    path: '/checkout',
+    element: <Checkout />
   }
 ])
