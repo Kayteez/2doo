@@ -11,6 +11,9 @@ export default {
         'extra-blue': '#001AFF',
         'deep-pink': '#FF009D',
         'more-yellow': '#FFB800'
+      },
+      backgroundImage: {
+        ocean: "url('/src/assets/images/png/ocean-bg.png')"
       }
     }
   },
