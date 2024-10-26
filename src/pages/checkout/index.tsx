@@ -1,11 +1,13 @@
 import { useNavigate } from 'react-router-dom'
+import QRCode from '../../assets/images/png/qr-code.png'
 
 export default function Checkout() {
   const navigate = useNavigate()
   return (
-    <div className='bg-ocean h-screen bg-cover bg-left-top bg-no-repeat'>
-      <div className='flex flex-col items-center justify-end h-full'>
-        <div className='relative p-4 mx-4 mb-52'>
+    <div className='bg-ocean h-screen bg-cover bg-no-repeat'>
+      <div className='flex flex-col items-center justify-end h-full gap-5'>
+        <img src={QRCode} alt='QR-code' width={250} />
+        <div className='relative p-4 mx-4 mb-20'>
           <div className='relative z-50'>
             <div className='flex z-50 relative justify-center items-center gap-2'>
               <div className='p-4 bg-white flex flex-col justify-center items-center rounded-lg'>
