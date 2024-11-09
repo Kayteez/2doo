@@ -41,7 +41,7 @@ export const Routes = createBrowserRouter([
   },
   {
     path: '/ocean',
-    element: <Layout>ocean</Layout>
+    element: <Checkout />
   },
   {
     path: '/account',
@@ -50,9 +50,5 @@ export const Routes = createBrowserRouter([
   {
     path: '/login',
     element: <Login />
-  },
-  {
-    path: '/checkout',
-    element: <Checkout />
   }
 ])
